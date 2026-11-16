@@ -41,6 +41,16 @@ export { RealtimeHub } from "./src/lib/realtime/hub";
 
 export default {
 	async fetch(request: Request, rawEnv: CloudflareEnv, ctx: ExecutionContext) {
+		// Time Inteligente: the workers.dev address only redirects to the canonical APP_URL,
+		// so old bookmarks, stale tabs and installed apps land on the real domain.
+		const canonical = rawEnv.APP_URL?.trim();
+		if (canonical) {
+			const incoming = new URL(request.url);
+			if (incoming.hostname.endsWith(".workers.dev")) {
+				const target = new URL(incoming.pathname + incoming.search, canonical);
+				return Response.redirect(target.toString(), 301);
+			}
+		}
 		// Reads go through a D1 session anchored at the client's bookmark cookie so D1 can serve
 		// them from read replicas; email/queue/scheduled below keep primary reads on purpose.
 		const d1Session = withD1ReadSession(rawEnv, request);
