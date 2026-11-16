@@ -1,8 +1,11 @@
 import type { CfApiError, CfAuth } from "@/lib/cloudflare-api.types";
 
 export function getCloudflareAuth(env: CloudflareEnv): CfAuth {
-	const token = env.CF_TOKEN?.trim();
-	const key = env.CF_API_KEY?.trim();
+	// Pasting into a hidden terminal prompt can leave control characters, a BOM or
+	// whitespace in the secret; none of these are valid in a token or key.
+	const clean = (value?: string) => value?.replace(/[\s\u0000-\u001f\u007f﻿​-‍]/g, "");
+	const token = clean(env.CF_TOKEN);
+	const key = clean(env.CF_API_KEY);
 	const email = env.CF_EMAIL?.trim();
 
 	if (key && email) {

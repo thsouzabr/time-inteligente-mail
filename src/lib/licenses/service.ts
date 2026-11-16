@@ -33,13 +33,15 @@ async function getOrCreateLicenseSettings(env: CloudflareEnv) {
 	return settings;
 }
 
+// Time Inteligente build: every feature is enabled (Team plan, no seat limit),
+// as permitted by the AGPL-3.0 license of the upstream Mailflare source.
 function toLicenseStatus(settings: typeof licenseSettings.$inferSelect): LicenseStatus {
-	const active = settings.state === "active" && (settings.plan === "pro" || settings.plan === "team");
+	const active = true;
 	return {
-		plan: active ? settings.plan : "community",
-		state: settings.state,
+		plan: "team",
+		state: "active",
 		features: parseFeatures(settings.features),
-		seatLimit: active && settings.plan === "pro" ? settings.seatLimit : null,
+		seatLimit: null,
 		instanceId: settings.instanceId,
 		instanceUrl: settings.instanceUrl,
 		active,
@@ -65,7 +67,7 @@ export async function getLicenseEntitlements(env: CloudflareEnv): Promise<Licens
 			canForwardEmail: status.active,
 		};
 	} catch {
-		return { plan: "community", canCustomizeBranding: false, canManageAccounts: false, canShareMailboxes: false, accountSeatLimit: 0, canForwardEmail: false };
+		return { plan: "team", canCustomizeBranding: true, canManageAccounts: true, canShareMailboxes: true, accountSeatLimit: null, canForwardEmail: true };
 	}
 }
 

@@ -30,7 +30,18 @@ export async function cfRequest<T>(
 			...(init?.headers ?? {}),
 		},
 	});
-	const json = (await res.json()) as CfResponse<T>;
+	const text = await res.text();
+	let json: CfResponse<T>;
+	try {
+		json = JSON.parse(text) as CfResponse<T>;
+	} catch {
+		throw new CloudflareApiError(
+			`Cloudflare API ${res.status} ${res.statusText} on ${path}: non-JSON response (${text.length} bytes)${text ? `: ${text.slice(0, 200)}` : ""}`,
+			res.status,
+			path,
+			[],
+		);
+	}
 
 	if (!json.success) {
 		throw new CloudflareApiError(
