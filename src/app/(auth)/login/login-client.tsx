@@ -263,16 +263,16 @@ export function LoginClient({ adding = false }: { adding?: boolean }) {
   return (
     <AuthShell
       icon={Mail}
-      title={adding ? t("auth.addAnother") : t("auth.signIn")}
+      title={adding ? t("auth.addAnother") : t("login.title")}
       description={
         adding
           ? t("auth.addDescription")
-          : t("auth.signInDescription")
+          : t("login.description")
       }
     >
       <form method="post" onSubmit={onSubmit} className="space-y-5">
         <div className="space-y-2">
-          <Label htmlFor="email">{t("auth.email")}</Label>
+          <Label htmlFor="email">{t("login.email")}</Label>
           <Input
             id="email"
             name="email"
@@ -322,14 +322,14 @@ export function LoginClient({ adding = false }: { adding?: boolean }) {
           onClick={() => void onPasskey()}
         >
           <KeyRound className="h-4 w-4" />
-          {t("passkey.signIn")}
+          {t("login.passkey")}
         </Button>
         <details className="text-center">
           <summary className="cursor-pointer list-none text-xs font-medium text-neutral-500 underline decoration-neutral-300 underline-offset-2 hover:text-neutral-800 [&::-webkit-details-marker]:hidden">
-            {t("passkey.cantUse")}
+            {t("login.helpTitle")}
           </summary>
           <p className="mt-2 rounded-2xl border border-neutral-100 bg-neutral-50/60 px-4 py-3 text-left text-xs leading-5 text-neutral-500">
-            {t("passkey.lostAllHint")}
+            {t("login.helpText")}
           </p>
         </details>
       </form>

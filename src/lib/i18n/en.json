@@ -2456,5 +2456,11 @@
 	"actions.unsubscribeDeleteAll": "Unsubscribe & delete all",
 	"actions.unsubscribeDeleteConfirm": "Move {count} past emails from this sender to Trash?",
 	"actions.unsubscribeTrashDone": "Unsubscribed and moved {count} emails to Trash",
-	"attachment.downloadAllFlagged": "Some attachments are flagged as potentially dangerous. Download the archive anyway?"
+	"attachment.downloadAllFlagged": "Some attachments are flagged as potentially dangerous. Download the archive anyway?",
+	"login.title": "Sign in to your company mailbox",
+	"login.description": "For Time Inteligente team members only. Sign in with your company credentials.",
+	"login.email": "Company email",
+	"login.passkey": "Sign in with a passkey",
+	"login.helpTitle": "Can't sign in?",
+	"login.helpText": "Ask your Time Inteligente administrator to reset your access or send you a recovery link."
 }

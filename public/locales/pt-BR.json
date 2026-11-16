@@ -2471,5 +2471,11 @@
 	"account.openApps": "Abrir menu de apps",
 	"account.signOutAccountConfirm": "Sair de {name} ({email})? Você precisará entrar novamente para usar esta conta.",
 	"invite.acceptedLabel": "Aceito",
-	"invite.declinedLabel": "Recusado"
+	"invite.declinedLabel": "Recusado",
+	"login.title": "Acesse sua caixa corporativa",
+	"login.description": "Área exclusiva para colaboradores do Time Inteligente. Entre com suas credenciais corporativas.",
+	"login.email": "E-mail corporativo",
+	"login.passkey": "Entrar com chave de acesso",
+	"login.helpTitle": "Não consegue acessar?",
+	"login.helpText": "Fale com o administrador do Time Inteligente para redefinir seu acesso ou receber um link de recuperação."
 }
