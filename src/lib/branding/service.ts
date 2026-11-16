@@ -21,7 +21,8 @@ export async function getBranding(env: CloudflareEnv): Promise<Branding> {
 			.where(eq(appSettings.id, APP_SETTINGS_ID))
 			.limit(1);
 		return {
-			appName: settings?.appName || DEFAULT_APP_NAME,
+			// A row saved before the rebrand may still hold the old default name.
+			appName: settings?.appName && settings.appName !== "Mailflare" ? settings.appName : DEFAULT_APP_NAME,
 			hasCustomIcon: !!settings?.iconKey,
 			canCustomizeBranding: true,
 		};

@@ -10,17 +10,13 @@ export function HomeHeroActions() {
 	const { t } = useLanguage();
 	const hasUser = !!useHomeAuth();
 
+	// Time Inteligente: accounts are invitation-only, so visitors can only sign in.
 	return (
 		<div className="mt-8 flex flex-col gap-3 sm:flex-row">
 			<Button size="lg" asChild className="rounded-full px-6">
-				<Link href={hasUser ? "/inbox" : "/setup"}>
-					{hasUser ? t("home.openDashboard") : t("home.createAccount")}
-					<ArrowRight className="h-4 w-4" />
-				</Link>
-			</Button>
-			<Button size="lg" variant="outline" asChild className="rounded-full border-neutral-200 bg-white px-6">
 				<Link href={hasUser ? "/inbox" : "/login"}>
-					{hasUser ? t("home.viewInbox") : t("home.logIn")}
+					{hasUser ? t("home.openDashboard") : t("home.logIn")}
+					<ArrowRight className="h-4 w-4" />
 				</Link>
 			</Button>
 		</div>

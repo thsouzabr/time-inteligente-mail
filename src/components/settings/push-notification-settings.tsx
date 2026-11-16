@@ -54,10 +54,10 @@ export function PushNotificationSettings() {
 		!state.supported ||
 		(!state.configured && !state.subscribed) ||
 		(state.permission === "denied" && !state.subscribed);
-	let description = "Get new mail alerts even when Mailflare is closed.";
-	if (!state.supported) description = "This browser does not support Web Push for Mailflare.";
-	else if (!state.configured) description = "Web Push has not been configured on this Mailflare server.";
-	else if (state.permission === "denied") description = "Notifications are blocked in your browser settings.";
+	let description = "Receba alertas de novos e-mails mesmo com o Time Inteligente fechado.";
+	if (!state.supported) description = "Este navegador não suporta notificações push do Time Inteligente.";
+	else if (!state.configured) description = "As notificações push ainda não foram configuradas neste servidor.";
+	else if (state.permission === "denied") description = "As notificações estão bloqueadas nas configurações do navegador.";
 
 	return (
 		<div>

@@ -14,7 +14,7 @@ export function BrandingProvider({ children, initialBranding }: { children: Reac
 	function applyBranding(nextBranding: Branding) {
 		setBranding(nextBranding);
 		setIconVersion(Date.now());
-		if (document.title === "Mailflare" || document.title === branding.appName) {
+		if (document.title === "Mailflare" || document.title === "Time Inteligente" || document.title === branding.appName) {
 			document.title = nextBranding.appName;
 		}
 	}

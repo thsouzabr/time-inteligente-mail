@@ -39,7 +39,7 @@ export const heroMessages: MailPreview[] = [
 	},
 	{
 		icon: MailCheck,
-		sender: "admin@mailflare.dev",
+		sender: "admin@timeinteligente.tech",
 		subjectKey: "home.msg4.subject",
 		previewKey: "home.msg4.preview",
 		badgeKey: "home.msg4.badge",
@@ -64,7 +64,7 @@ export function getHomeActions(isLoggedIn: boolean): HomeAction[] {
 	}
 
 	return [
-		{ href: "/login", labelKey: "home.logIn", variant: "outline" },
-		{ href: "/setup", labelKey: "home.createAccount", variant: "default" },
+		// Time Inteligente: accounts are invitation-only, so there is no sign-up action.
+		{ href: "/login", labelKey: "home.logIn", variant: "default" },
 	];
 }

@@ -23,7 +23,7 @@ function subscribeThemePreference(onChange: () => void) {
 	return () => window.removeEventListener(THEME_CHANGED_EVENT, onChange);
 }
 
-const serverThemePreference = (): ThemePreference => "system";
+const serverThemePreference = (): ThemePreference => "dark";
 
 export function AppearanceSettings() {
 	const { t } = useLanguage();

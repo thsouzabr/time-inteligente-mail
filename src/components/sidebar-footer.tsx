@@ -40,14 +40,15 @@ export function PoweredBy({ className = "px-1" }: { className?: string }) {
 	const { t } = useLanguage();
 	return (
       <p className={`${className} text-[11px] text-neutral-500`}>
-        {t("navigation.poweredBy")}{" "}
+        {t("navigation.poweredBy")} Time Inteligente v{packageJson.version} ·{" "}
+        {/* AGPL-3.0 §13: users of this modified build must be able to get its source. */}
         <a
           href={SOURCE_CODE_URL}
           target="_blank"
           className="hover:underline text-neutral-500"
           rel="noreferrer"
         >
-          Mailflare v{packageJson.version} (AGPL)
+          código-fonte (AGPL)
         </a>
       </p>
 	);

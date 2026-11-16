@@ -8,7 +8,7 @@ export const THEME_CHANGED_EVENT = "mailflare:theme-changed";
 export const themeBootstrapScript = `(() => {
 	try {
 		const saved = localStorage.getItem("mailflare-theme");
-		const preference = saved === "light" || saved === "dark" ? saved : "system";
+		const preference = saved === "light" || saved === "dark" || saved === "system" ? saved : "dark";
 		const dark = preference === "dark" || (preference === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
 		document.documentElement.classList.toggle("dark", dark);
 		document.documentElement.classList.toggle("light", !dark);
@@ -20,12 +20,13 @@ export function isThemePreference(value: unknown): value is ThemePreference {
 }
 
 export function readThemePreference(): ThemePreference {
-	if (typeof window === "undefined") return "system";
+	// Time Inteligente: the brand theme is dark, so it is the default.
+	if (typeof window === "undefined") return "dark";
 	try {
 		const saved = localStorage.getItem(THEME_STORAGE_KEY);
-		return isThemePreference(saved) ? saved : "system";
+		return isThemePreference(saved) ? saved : "dark";
 	} catch {
-		return "system";
+		return "dark";
 	}
 }
 
@@ -44,8 +45,7 @@ export function applyTheme(preference: ThemePreference): void {
 
 export function saveThemePreference(preference: ThemePreference): void {
 	try {
-		if (preference === "system") localStorage.removeItem(THEME_STORAGE_KEY);
-		else localStorage.setItem(THEME_STORAGE_KEY, preference);
+		localStorage.setItem(THEME_STORAGE_KEY, preference);
 	} catch {
 		// Storage can be unavailable in private windows; the theme still applies for this page.
 	}

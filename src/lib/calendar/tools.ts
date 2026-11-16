@@ -68,7 +68,7 @@ export async function runCalendarTool(context: CalendarToolContext, name: Calend
 		const count = ((input.updates ?? input.eventIds) as unknown[]).length;
 		return {
 			status: "confirmation_required",
-			message: `${count} event series would be ${name === "delete_events" ? "deleted" : "changed"}. Nothing happened yet: ask the user to review and approve it in Mailflare.`,
+			message: `${count} event series would be ${name === "delete_events" ? "deleted" : "changed"}. Nothing happened yet: ask the user to review and approve it in Time Inteligente.`,
 			reviewUrl: `/agent/calendar-review?token=${encodeURIComponent(token)}`,
 			expiresInMinutes: 15,
 		};

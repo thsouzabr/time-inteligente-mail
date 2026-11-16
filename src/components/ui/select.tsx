@@ -99,7 +99,7 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
             aria-labelledby={ariaLabelledBy}
             aria-describedby={ariaDescribedBy}
             className={cn(
-              "flex w-full min-w-0 items-center justify-between gap-2 rounded-md bg-transparent text-left outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-600 disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-neutral-500",
+              "flex w-full min-w-0 items-center justify-between gap-2 rounded-xl bg-transparent text-left outline-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-600 disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-neutral-500",
               className,
             )}
           >
@@ -125,7 +125,7 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
                     value={toInternal(option.value)}
                     disabled={option.disabled}
                     lang={option.lang}
-                    className="relative flex cursor-pointer select-none items-center rounded-md py-1.5 pr-8 pl-3 outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[highlighted]:bg-neutral-100"
+                    className="relative flex cursor-pointer select-none items-center rounded-lg py-1.5 pr-8 pl-3 outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[highlighted]:bg-neutral-100"
                   >
                     <SelectPrimitive.ItemText>{option.label}</SelectPrimitive.ItemText>
                     <SelectPrimitive.ItemIndicator className="absolute right-2 inline-flex">

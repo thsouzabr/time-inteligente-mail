@@ -6,8 +6,11 @@ export { DEFAULT_LOCALE } from "./locales";
 export const LOCALE_COOKIE = "mailflare-locale";
 export const LOCALE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
+/** Language used when the visitor has not picked one. English stays the bundled base catalog. */
+export const FALLBACK_LOCALE: Locale = "pt-BR";
+
 export function resolveLocale(value: unknown): Locale {
-	return typeof value === "string" && Object.hasOwn(locales, value) ? value as Locale : DEFAULT_LOCALE;
+	return typeof value === "string" && Object.hasOwn(locales, value) ? value as Locale : FALLBACK_LOCALE;
 }
 
 export function getDirection(locale: Locale): "ltr" | "rtl" {
